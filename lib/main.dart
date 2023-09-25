@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation/cube-animation.dart';
 import 'package:flutter_animation/semi-circle-animation.dart';
 import 'package:flutter_animation/simple-animation.dart';
 
@@ -14,12 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Animations',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SemiCircle(),
+      home: Cube(),
     );
   }
 }
