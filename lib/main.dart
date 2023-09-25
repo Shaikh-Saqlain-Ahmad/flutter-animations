@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation/shuff.dart';
+import 'package:flutter_animation/semi-circle-animation.dart';
+import 'package:flutter_animation/simple-animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Animate(),
+      home: SemiCircle(),
     );
   }
 }
