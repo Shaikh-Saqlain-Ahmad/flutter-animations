@@ -20,6 +20,13 @@ class _AnimateState extends State<Animate> with SingleTickerProviderStateMixin {
     _controller.repeat();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -48,11 +55,5 @@ class _AnimateState extends State<Animate> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
