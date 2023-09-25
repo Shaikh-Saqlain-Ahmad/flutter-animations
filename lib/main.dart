@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation/view/cube-animation.dart';
 import 'package:flutter_animation/hero-animation.dart';
-import 'package:flutter_animation/semi-circle-animation.dart';
-import 'package:flutter_animation/simple-animation.dart';
+import 'package:flutter_animation/view/semi-circle-animation.dart';
+import 'package:flutter_animation/view/simple-animation.dart';
 
 void main() {
   runApp(const MyApp());

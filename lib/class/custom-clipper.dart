@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_animation/semi-circle-animation.dart';
+import 'package:flutter_animation/view/semi-circle-animation.dart';
 
 class HalfCircleClipper extends CustomClipper<Path> {
   final CircleSide side;
