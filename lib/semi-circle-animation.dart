@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation/custom-clipper.dart';
+import 'package:flutter_animation/class/custom-clipper.dart';
 import 'dart:math' show pi;
 
 class SemiCircle extends StatefulWidget {
