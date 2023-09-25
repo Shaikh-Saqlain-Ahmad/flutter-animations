@@ -38,10 +38,11 @@ extension ToPath on CircleSide {
   }
 }
 
-class _SemiCircleState extends State<SemiCircle>
-    with SingleTickerProviderStateMixin {
+class _SemiCircleState extends State<SemiCircle> with TickerProviderStateMixin {
   late AnimationController _counterClockwiseRotationController;
   late Animation<double> _counterClockwiseRotationAnimation;
+  late AnimationController _flipController;
+  late Animation<double> _flipAnimation;
   @override
   void initState() {
     super.initState();
@@ -51,11 +52,25 @@ class _SemiCircleState extends State<SemiCircle>
         .animate(CurvedAnimation(
             parent: _counterClockwiseRotationController,
             curve: Curves.bounceOut));
+    _flipController =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    _counterClockwiseRotationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _flipAnimation = Tween<double>(
+                begin: _flipAnimation.value, end: _flipAnimation.value + pi)
+            .animate(CurvedAnimation(
+                parent: _flipController, curve: Curves.bounceOut));
+        _flipController
+          ..reset()
+          ..forward();
+      }
+    });
   }
 
   @override
   void dispose() {
     _counterClockwiseRotationController.dispose();
+    _flipController.dispose();
     super.dispose();
   }
 
@@ -78,21 +93,40 @@ class _SemiCircleState extends State<SemiCircle>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ClipPath(
-                    clipper: const HalfCircleClipper(side: CircleSide.left),
-                    child: Container(
-                      color: Colors.blue,
-                      width: 100,
-                      height: 100,
-                    ),
+                  AnimatedBuilder(
+                    animation: _flipController,
+                    builder: (context, child) {
+                      return Transform(
+                          alignment: Alignment.centerRight,
+                          transform: Matrix4.identity()
+                            ..rotateY(_flipAnimation.value),
+                          child: ClipPath(
+                              clipper: const HalfCircleClipper(
+                                  side: CircleSide.left),
+                              child: Container(
+                                color: Colors.blue,
+                                width: 100,
+                                height: 100,
+                              )));
+                    },
                   ),
-                  ClipPath(
-                    clipper: const HalfCircleClipper(side: CircleSide.right),
-                    child: Container(
-                      color: Colors.yellow,
-                      width: 100,
-                      height: 100,
-                    ),
+                  AnimatedBuilder(
+                    animation: _flipController,
+                    builder: (context, child) {
+                      return Transform(
+                          alignment: Alignment.centerLeft,
+                          transform: Matrix4.identity()
+                            ..rotateY(_flipAnimation.value),
+                          child: ClipPath(
+                            clipper:
+                                const HalfCircleClipper(side: CircleSide.right),
+                            child: Container(
+                              color: Colors.yellow,
+                              width: 100,
+                              height: 100,
+                            ),
+                          ));
+                    },
                   )
                 ],
               ),
