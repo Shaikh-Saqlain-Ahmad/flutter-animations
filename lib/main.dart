@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation/animated-container.dart';
 
 import 'package:flutter_animation/hero-animation.dart';
+import 'package:flutter_animation/view/color-animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AnimationUsingContainer(),
+      home: ColorAnimation(),
     );
   }
 }
