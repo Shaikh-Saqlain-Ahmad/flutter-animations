@@ -3,6 +3,7 @@ import 'package:flutter_animation/animated-container.dart';
 
 import 'package:flutter_animation/hero-animation.dart';
 import 'package:flutter_animation/view/animated-drawer.dart';
+import 'package:flutter_animation/view/animated-prompt.dart';
 import 'package:flutter_animation/view/color-animation.dart';
 import 'package:flutter_animation/view/multi-shape-animation.dart';
 
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Animations',
+      title: '',
       theme: ThemeData(
           //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           colorScheme: ColorScheme.dark()),
-      home: Shuff(),
+      home: Caller(),
     );
   }
 }
