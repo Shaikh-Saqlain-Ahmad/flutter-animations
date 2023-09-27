@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation/animated-container.dart';
 
 import 'package:flutter_animation/hero-animation.dart';
+import 'package:flutter_animation/view/animated-drawer.dart';
 import 'package:flutter_animation/view/color-animation.dart';
 import 'package:flutter_animation/view/multi-shape-animation.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           colorScheme: ColorScheme.dark()),
-      home: MutliShape(),
+      home: Shuff(),
     );
   }
 }
